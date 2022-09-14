@@ -1,4 +1,4 @@
-# Tugas 2: Pengenalan Aplikasi Django dan Models View Template (MVT) pada Django
+# Tugas 2: Studi Kasus Katalog dalam Pengenalan Aplikasi Django dan Models View Template (MVT) pada Django
 
 **Undissya Putri Maharani**<br/>
 **2106650935 - PBP F**
@@ -12,9 +12,9 @@
 <br/>
 
 - Terdapat request dari klien melalui web browser
-- Request diterima dan dilanjutkan routing oleh URL (urls.py)
-- Request diteruskan ke View (views.py) yang sesuai
-- Terdapat operasi dengan data menggunakan Model (models.py)
+- Request diterima dan dilanjutkan routing oleh URL (`urls.py`)
+- Request diteruskan ke View (`views.py`) yang sesuai
+- Terdapat operasi dengan data menggunakan Model (`models.py`)
 - Model akan mengambil data dari database
 - HTTP Response akan berisi penyelesaian dari request klien
 - Web browser akan menampilkan web page sebagai bentuk respons kepada klien<br/>
@@ -29,7 +29,7 @@ Alasan pentingnya menggunakan virtual environment:
 Apakah kita dapat membuat aplikasi web tanpa virtual environment?
 Ya, bisa. Namun, penggunaan virtual environment lebih direkomendasikan karena dapat menjadi sandbox saat menginstall *library* apapun tanpa memberi pengaruh pada komputer. Ketika virtual environment dihapus, maka *library* yang kita install menjadi hilang. Virtual environment membantu meminimalisir masalah pengembangan dan produksi.<br/>
 
-## Penjelasan cara kamu implementasi poin 1 sampai dengan 4 di atas ##
+## Penjelasan cara implementasi poin 1 sampai dengan 4 di atas: ##
 1. Kita dapat menambahkan fungsi pada file `views.py` untuk mengambil data dari model yang tersedia. Fungsi tersebut berguna untuk mengambil data pada CatalogItem. Dictionary yang dibentuk akan diteruskan untuk dikembalikan dalam HTML.
 2. Lanjutkan dengan migrasi skema model ke dalam database lokal dan masukkan data ke dalam database Django lokal. Lalu, bentuk routing pada file `urls.py` dengan memetakan fungsi yang telah dibikin pada langkah pertama. 
 3. Lakukan pengambilan data dari database dengan meng-import ke `views.py`. Panggil fungsi `show_katalog` untuk memanggil fungsi query ke model database. Jangan lupa untuk tambahkan `context` untuk mengembalikan fungsi render. 
