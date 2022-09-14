@@ -1,7 +1,7 @@
 # Tugas 2: Pengenalan Aplikasi Django dan Models View Template (MVT) pada Django
 
-## Undissya Putri Maharani
-## 2106650935- PBP F
+Undissya Putri Maharani
+2106650935 - PBP F
 
 **Halaman Utama Aplikasi** [here](https://katalogapplication.herokuapp.com/)<br/>
 **Katalog Aplikasi** [here](https://katalogapplication.herokuapp.com/katalog/)<br/>
