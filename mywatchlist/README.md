@@ -4,7 +4,7 @@
 **2106650935 - PBP F**
 
 **Halaman Utama Aplikasi** [here](https://katalogapplication.herokuapp.com/)<br/>
-**Halaman HTML** [here](https://katalogapplication.herokuapp.com/katalog/html/)<br/>
+**Halaman HTML** [here](https://katalogapplication.herokuapp.com/mywatchlist/html/)<br/>
 **Halaman JSON** [here](https://katalogapplication.herokuapp.com/mywatchlist/json/)<br/>
 **Halaman XML** [here](https://katalogapplication.herokuapp.com/mywatchlist/xml/)<br/>
 
