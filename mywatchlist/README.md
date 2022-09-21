@@ -53,9 +53,7 @@ Alasan pentingnya menggunakan data delivery adalah kita dapat dengan mudah menga
 ## Screenshot Postman ##
 1. HTML
 ![messageImage_1663767760728](https://user-images.githubusercontent.com/112463909/191523457-b2f3590f-eb17-4582-88d0-69fa64a44df8.jpg)
-<br/>
 2. JSON
 ![messageImage_1663767690504](https://user-images.githubusercontent.com/112463909/191522841-ee3a0f93-4eda-4523-8269-87911b06bed9.jpg)
-<br/>
 3. XML
-![messageImage_1663767822767](https://user-images.githubusercontent.com/112463909/191523679-1e5eb47a-4b0d-4c3f-91dd-521e20a5a8b0.jpg)
+![messageImage_1663767822767](https://user-images.githubusercontent.com/112463909/191524565-7b0cd721-f796-4955-a804-69e323cd08ec.jpg)
