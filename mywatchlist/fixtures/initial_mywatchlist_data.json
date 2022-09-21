@@ -1,0 +1,112 @@
+[
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 1,
+        "fields":{
+            "watched": false,
+            "title":"The Shawshank Redemption",
+            "rating": 4.1,
+            "release_date": "2014-10-14",
+            "review":"An incredible movie. One that lives with you."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 2,
+        "fields":{
+            "watched": false,
+            "title":"It's a Wonderful Life",
+            "rating": 4.3,
+            "release_date": "1947-01-07",
+            "review":"A wonderful film that should be watched again and again."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 3,
+        "fields":{
+            "watched": false,
+            "title":"Batman Begins",
+            "rating": 4.1,
+            "release_date": "2005-06-15",
+            "review":"One Super-Hero Film With Tremendous Depth!"
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 4,
+        "fields":{
+            "watched": false,
+            "title":"Miss & Mrs. Cops",
+            "rating": 3,
+            "release_date": "2019-05-09",
+            "review":"This is an enterntaining yet inspiring movie"
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 5,
+        "fields":{
+            "watched": true,
+            "title":"Aladdin",
+            "rating": 4.0,
+            "release_date": "1992-11-25",
+            "review":"Aladdin is a beautifully constructed film. that is for me one of Disney's best!"
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 6,
+        "fields":{
+            "watched": true,
+            "title":"Inside Out",
+            "rating": 4.1,
+            "release_date": "2015-06-19",
+            "review":"Poor imagination and no fun turns the movie upside down."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 7,
+        "fields":{
+            "watched": false,
+            "title":"Insidious: Chapter 3",
+            "rating": 3.0,
+            "release_date": "2015-06-05",
+            "review":"A few frights but the sound quality!!!"
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 8,
+        "fields":{
+            "watched": true,
+            "title":"Toy Story 4",
+            "rating": 4,
+            "release_date": "2019-06-21",
+            "review":"Good, except it feels like an unnecessary epilogue to a fantastic trilogy"
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 9,
+        "fields":{
+            "watched": true,
+            "title":"Coco",
+            "rating": 4.1,
+            "release_date": "2017-11-22",
+            "review":"A Charming Depiction of a Beautiful Spanish-Language Tradition"
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 10,
+        "fields":{
+            "watched": false,
+            "title":"Soul",
+            "rating": 4.0,
+            "release_date": "2020-12-05",
+            "review":"Absolutely incredible."
+        }
+    }
+]
