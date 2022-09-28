@@ -64,7 +64,7 @@ def create_task(request):
             data = form.save(commit=False)
             data.user = request.user
             data.save()
-            return HttpResponseRedirect(reverse('todolist:login'))
+            return HttpResponseRedirect(reverse('todolist:todolist'))
         else:
             message.info(request, 'Username atau Password salah!')
     else:
