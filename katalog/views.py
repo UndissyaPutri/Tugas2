@@ -10,4 +10,4 @@ def show_katalog(request):
         'nama': 'Undissya Putri Maharani'
     }
 
-    return render(request, "katalog.html", context)
+    return render(request, "katalog.html", context) #carrier

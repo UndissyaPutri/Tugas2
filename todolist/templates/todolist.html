@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block meta %}
+<title>📑#TODO List📑</title>
+{% endblock meta %}
+
+{% block content %}  
+
+    <body style="background-color:#ffc0cb">
+    <h2 style="text-align: center; color: #33475b">Welcome to your daily #TODO List, dear {{username}}💖</h2>
+    <h2 style="text-align: center; color: #33475b" class="TODO List">Have a productive day!</h2>
+    <table table align="center" >
+        <tr> 
+            <th style="color: #33475b">Date</th>
+            <th style="color: #33475b">Title</th>
+            <th style="color: #33475b">Description</th>
+            <th style="color: #33475b">Status</th>
+            <th style="color: #33475b">Filter</th>
+            <th style="color: #33475b">Delete</th>
+        </tr>
+
+        
+        {% for todo in todolist %}
+        <tr>
+            <td><strong style="font-weight:normal; color: #33475b">{{todo.date}}<strong></td>
+            <td><strong style="font-weight:normal; color: #33475b">{{todo.title}}<strong></td>
+            <td><strong style="font-weight:normal; color: #33475b">{{todo.description}}<strong></td>
+            {% if todo.is_finished == False %}
+            <td><strong style="font-weight:normal; color: #33475b">In Progress<strong></td> 
+            {% else %} 
+            <td><strong style="font-weight:normal; color: #33475b">Complete<strong></td>
+            {% endif %}
+
+            <td>
+                <a href="/todolist/update-status/{{todo.id}}">
+                    <button type="submit">Update</button>
+                </a>
+            </td>
+            <td>
+                <a href="/todolist/delete-task/{{todo.id}}">
+                    <button type="submit">Delete</button>
+                </a>
+            </td>
+
+        </tr>
+        {% endfor %}
+    
+        
+    </table>
+    
+    <a href="{% url 'todolist:create_task' %}"><button>Add New Task </button>
+    </a>
+    
+    <a href="{% url 'todolist:logout' %}"><button>Logout</button>
+    </a>
+</div>
+</html>
+
+{% endblock content %}
+</body>
