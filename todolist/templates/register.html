@@ -5,6 +5,19 @@
 {% endblock meta %}
 
 {% block content %}  
+<style>
+    .login{
+        padding: 100px;
+        max-width: 750px;
+        margin: auto;
+        display: center;
+        width: auto;
+        letter-spacing:0.1;
+        font-size:0.9rem;
+        font-family: Mukta, sans-serif;
+        color: #33475b;
+    }
+</style>
 
 <div class = "login">
     
@@ -24,7 +37,7 @@
     {% if messages %}  
         <ul>   
             {% for message in messages %}  
-                <li>{{ message }}</li>  
+                <li>{{message}}</li>  
                 {% endfor %}  
         </ul>   
     {% endif %}

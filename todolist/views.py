@@ -66,7 +66,7 @@ def create_task(request):
             data.save()
             return HttpResponseRedirect(reverse('todolist:show_todolist'))
         else:
-            message.info(request, 'Username atau Password salah!')
+            message.info(request, 'Data Anda salah')
     else:
         form = DataUser()
     context = { 'form':form }
