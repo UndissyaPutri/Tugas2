@@ -47,6 +47,6 @@ Alur dari pengumpulan data pengguna sebagai berikut:
 9. Deploy aplikasi ke Heroku dan pastikan semua fungsi berjalan dengan baik. Lakukan langkah testing dengan login akun dan membuat todo list</b>
 
 </br></br>
-Sumber yang digunakan pada Tugas 4:
+Sumber yang digunakan pada Tugas 4:</br>
 https://www.youtube.com/watch?v=Oy9K7iz3aa4</br>
 https://www.youtube.com/results?search_query=styling+button+in+html+in+the+middle+file+
