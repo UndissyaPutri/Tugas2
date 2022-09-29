@@ -16,47 +16,32 @@ Kita dapat membuat form kita dengan sengaja tidak ingin dicek karena data yang d
 
 Apabila kita tidak menggunakan `{% csrf_token %}` pada form, maka ada kemungkinan hacker dapat mengirim form yang sudah di modifikasi dan menjadi berbahaya lalu dikirim ke website kita. Tidak ada pengecekan pada data yang masuk sehingga keamanan website rendah dan bisa merugikan *developer* dan pengguna.<br/>
 
+## Apakah kita dapat membuat elemen `<form>` secara manual (tanpa menggunakan generator seperti `{{ form.as_table }}`)? Jelaskan secara gambaran besar bagaimana cara membuat `<form>` secara manual. ##
 
+Kita dapat membuat ekemen `<form>` secara manual melalui tag form, caranya sebagai berikut:
+1. Memposting data ke URL tujuan (pengguna melakukan submit data)
+2. Menyesuaikan pemilihan method untuk menyalurkan variabel-variabel pada URL tujuan menggunakan GET atau POST
+3. Gunakan INPUT dan INPUT TYPE untuk data atribut dari browser ke server<br/>
 
+##  Jelaskan proses alur data dari submisi yang dilakukan oleh pengguna melalui HTML form, penyimpanan data pada database, hingga munculnya data yang telah disimpan pada template HTML. ##
 
-XML
-XML adalah kependekan dari Extensible markup language dirancang untuk membawa data, bukan untuk menampilkan data. XML adalah bahasa markup yang mendefinisikan seperangkat aturan yang fokus pada kesederhanaan, umum, dan kegunaan di Internet.<br/>
+Alur dari pengumpulan data pengguna sebagai berikut:
+1. Pengguna membuat HTTP request melalui brower menuju alamat hosting
+2. Server akan menerima HTTP Request pengguna lalu akan menghandle path yang sesuai menggunakan `views.py`. Server kemudian akan membuat HTML form yang akan dikirimkan ke browser pengguna
+3. HTML akan ditampilkan dan pengguna bisa mengisi form. Browser akan membuat HTTP Request, method GET atau POST ke URL tujuan sesuai dengan HTML yang diterima
+4. Server akan menerima request dan langsung meng-*handle* path melaksanakan request
+5. Request akan dikembalikan kepada user menggunakan tampilan HTML</br>
 
-Perbedaan dari ketiganya adalah
-HTML
-- Sangat mudah untuk dipelajari dan digunakan
-- HTML merupakan platform independen
-- Gambar, video, dan audio dapat ditambahkan ke halaman web
-- Hypertext dapat ditambahkan ke teks<br/>
+##  Implementasi checklist ##
 
-JSON
-- Mudah untuk digunakan
-- Kinerja JSON cukup cepat
-- JSON bersifat open source dan gratis untuk digunakan
-- Hasil JSON bersih dan kompatibel yang mudah dibaca
-- JSON tidak memerlukan pustaka lain untuk diproses<br/>
-
-XML
-- XML dirancang untuk membawa data
-- XML sult untuk dibaca dan diinterpretasikan
-- Lebih terjamin keamanannya daripada JSON<br/>
-
-## Mengapa kita memerlukan data delivery dalam pengimplementasian sebuah platform? ##
-
-Alasan pentingnya menggunakan data delivery adalah kita dapat dengan mudah mengakse dan mengirim ke pengguna dan aplikasi. Biasanya kita dapat menggunakan HTML, JSON, atau XML dalam mengolah data. Dengan begitu, kita data yang ada jadi lebih terstruktur dan dapat memprediksi keadaan jangka panjang dengan data.<br/>
-
-## Implementasi Checklis ##
-
-1. Pertama kita dapat membuat aplikasi baru dengan `python manage.py startapp mywatchlist`, selanjutnya kita bisa set up migrasi skema model ke database Django lokal.
-2. Kita dapat mengolah data dalam `fixtures`, dalam file `initial_mywatchlist_data.json`. Jangan lupa untuk loaddata untuk memasukkan datababse ke Django lokal.
-3. Kita dapat set up `urls.py` dilanjutkan dengan runserver agar dapat melihat halaman pada `http://localhost:8000/mywatchlist/`.
-4. Olah model dengan 5 atribut yaitu `watched`, `title`, `rating`, `release_date`, `review`. Buat juga format untuk HTML, JSON, dan HML sekaligus routingnya dengan URL `http://localhost:8000/mywatchlist/` + `format`.
-5. Terakhir, kita dapat langsung melakukan deploy ke Heroku dan dapat di tes kebenarannya. Gunakan juga Postman untuk uji coba API sehingga aplikasi yang kita kembangkan tervalidasi.
-
-## Screenshot Postman ##
-1. HTML
-![messageImage_1663767760728](https://user-images.githubusercontent.com/112463909/191523457-b2f3590f-eb17-4582-88d0-69fa64a44df8.jpg)
-2. JSON
-![messageImage_1663767690504](https://user-images.githubusercontent.com/112463909/191522841-ee3a0f93-4eda-4523-8269-87911b06bed9.jpg)
-3. XML
-![messageImage_1663767822767](https://user-images.githubusercontent.com/112463909/191524565-7b0cd721-f796-4955-a804-69e323cd08ec.jpg)
+1. Masuk ke environtment lalu buat aplikasi baru dengan nama `todolist` menggunakan ```python manage.py startapp todolist```
+2. Lakukan penambahan path nama aplikasi `todolist` pada `project_django` dan tambahkan path `path('todolist/', include('todolist.urls')),` dalam `urlpatterns` sehingga kita dapat mengakses layanan lokal melalui ```http://localhost:8000/todolist```
+3. Buat model dengan nama `Task` lalu tambahkan atribut `user`, `date`, `title`, dan `description` pada `models.py`
+``class Task(models.Model):
+    ...``
+4. Buat fungsi untuk ringkasan form utama todolist pengguna, registrasi, login, logout, membuat task baru, dan menghapus task
+5. Buat interface aplikasi menggunakan HTML pada folder `templates`
+6. Simpan atribut username, tombol `Add` untuk menambah task, tombol `Logout`, dan tabel yang berisi ringkasan input pengguna (tanggal pembuatan task, judul, deskripsi, tombol status, dan tombol hapus task)
+7. Simpan atribut judul dan deskripsi task pada halaman `create-task`
+8. Lakukan routing untuk masing-masing halaman pada `urls.py` yaitu untuk halaman utama, register, login, create-task, detele-task, update-status, dan  logout
+9. Deploy aplikasi ke Heroku dan pastikan semua fungsi berjalan dengan baik. Lakukan langkah testing dengan login akun dan membuat todo list</b>
