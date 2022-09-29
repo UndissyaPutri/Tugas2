@@ -45,3 +45,8 @@ Alur dari pengumpulan data pengguna sebagai berikut:
 7. Simpan atribut judul dan deskripsi task pada halaman `create-task`
 8. Lakukan routing untuk masing-masing halaman pada `urls.py` yaitu untuk halaman utama, register, login, create-task, detele-task, update-status, dan  logout
 9. Deploy aplikasi ke Heroku dan pastikan semua fungsi berjalan dengan baik. Lakukan langkah testing dengan login akun dan membuat todo list</b>
+
+</b></b>
+Sumber yang digunakan pada Tugas 4:
+https://www.youtube.com/watch?v=Oy9K7iz3aa4
+https://www.youtube.com/results?search_query=styling+button+in+html+in+the+middle+file+
