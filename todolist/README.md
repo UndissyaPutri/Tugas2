@@ -3,10 +3,10 @@
 **Undissya Putri Maharani**<br/>
 **2106650935 - PBP F**
 
-**Tampilan Register** [here](http://localhost:8000/todolist/register/)<br/>
-**Tampilan Login** [here](http://localhost:8000/todolist/login/)<br/>
-**Halaman TODO List** [here](http://localhost:8000/todolist/)<br/>
-**Halaman New Task** [here](http://localhost:8000/todolist/create-task/)<br/>
+**Tampilan Register** [here](https://katalogapplication.herokuapp.com/todolist/register/)<br/>
+**Tampilan Login** [here](https://katalogapplication.herokuapp.com/todolist/login/)<br/>
+**Halaman TODO List** [here](https://katalogapplication.herokuapp.com/todolist/)<br/>
+**Halaman New Task** [here](https://katalogapplication.herokuapp.com/todolist/create-task/)<br/>
 
 ##  Apa kegunaan `{% csrf_token %}` pada elemen `<form>`? Apa yang terjadi apabila tidak ada potongan kode tersebut pada elemen `<form>`? ## 
 
@@ -46,7 +46,7 @@ Alur dari pengumpulan data pengguna sebagai berikut:
 8. Lakukan routing untuk masing-masing halaman pada `urls.py` yaitu untuk halaman utama, register, login, create-task, detele-task, update-status, dan  logout
 9. Deploy aplikasi ke Heroku dan pastikan semua fungsi berjalan dengan baik. Lakukan langkah testing dengan login akun dan membuat todo list</b>
 
-</b></b>
+</br></br>
 Sumber yang digunakan pada Tugas 4:
-https://www.youtube.com/watch?v=Oy9K7iz3aa4
+https://www.youtube.com/watch?v=Oy9K7iz3aa4</br>
 https://www.youtube.com/results?search_query=styling+button+in+html+in+the+middle+file+
