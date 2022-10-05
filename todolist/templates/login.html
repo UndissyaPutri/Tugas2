@@ -6,55 +6,45 @@
 
 {% block content %}
 
-<style>
-    .login{
-        padding: 150px;
-        max-width: 250px;
-        margin: auto;
-        display: center;
-        width: auto;
-        letter-spacing:0.1;
-        font-size:0.9rem;
-        font-family: Mukta, sans-serif;
-        color: #33475b;
-    }
-</style>
+{% load static %}
+<head>
+<link rel="stylesheet" href="{% static 'logincss.css' %}">
+    </head>
 
-<div class = "login">
+<body>
+    <div class = "login">
+        <h1 class= "header" style="text-align: center">Login Here!</h1>
+        <form method="POST" action="">
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <td>Username: </td>
+                    <td><input type="text" name="username" placeholder="Username" class="form-control"></td>
+                </tr>
+                        
+                <tr>
+                    <td>Password: </td>
+                    <td><input type="password" name="password" placeholder="Password" class="form-control"></td>
+                </tr>
 
-    <h1 style="text-align: center; color: #33475b">Login Here!</h1>
+            </table>
+                <tr>
+                    <center><input class="login_btn" type="submit" value="Login"></center>
+                </tr>
+        </form>
 
-    <form method="POST" action="">
-        {% csrf_token %}
-        <table>
-            <tr>
-                <td style="color: #33475b">Username: </td>
-                <td><input type="text" name="username" placeholder="Username" class="form-control"></td>
-            </tr>
-                    
-            <tr>
-                <td style="color: #33475b">Password: </td>
-                <td><input type="password" name="password" placeholder="Password" class="form-control"></td>
-            </tr>
+        {% if messages %}
+                {% for message in messages %}
+                <br>
+                    <p class="message">{{message}}</p>
+                {% endfor %}
+        {% endif %}     
+        <br/><br/>
 
-            <tr>
-                <td><input class="btn login_btn" type="submit" value="Login"></td>
-            </tr>
-        </table>
-    </form>
+        <p><b style="text-align: center">New here?</b>
+        <a style="text-align: center; color: #000;" href="{% url 'todolist:register' %}">Create an Account</a></p>
 
-    {% if messages %}
-        <ul>
-            {% for message in messages %}
-                <li>{{message}}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}     
-    <br/><br/>
-
-    <b>Belum mempunyai akun?</b>
-    <a style="text-align: center; color: #33475b" href="{% url 'todolist:register' %}">Buat Akun</a>
-
-</div>
+    </div>
+</body>
 
 {% endblock content %}

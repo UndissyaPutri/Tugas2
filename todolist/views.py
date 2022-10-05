@@ -46,7 +46,7 @@ def login_user(request):
             response.set_cookie('last_login', str(datetime.datetime.now())) # membuat cookie last_login dan menambahkannya ke dalam response
             return response
         else:
-            messages.info(request, 'Username atau Password salah!')
+            messages.info(request, 'Wrong Username or Password!')
     context = {}
     return render(request, 'login.html', context)
 
@@ -66,7 +66,7 @@ def create_task(request):
             data.save()
             return HttpResponseRedirect(reverse('todolist:show_todolist'))
         else:
-            message.info(request, 'Data Anda salah')
+            message.info(request, 'Wrong data!')
     else:
         form = DataUser()
     context = { 'form':form }
