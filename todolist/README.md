@@ -52,7 +52,7 @@ Alur dari pengumpulan data pengguna sebagai berikut:
 
 ## Perbedaan dari Inline, Internal, dan External CSS? Apa saja kelebihan dan kekurangan dari masing-masing style? ##
 
-<b> Inline Style </b>
+<b> Inline Style </b><br>
 Kode internal CSS merupakan kode yanng berisi tampilan aplikasi yang diletakkan sebagai atribut pada bagian HTML, biasanya kode CSS ada pada `head`. 
 
 ```
@@ -75,7 +75,7 @@ Kekurangan:
 - Hanya aktif pada halaman tertentu tempat kode berada
 - Sulit jika digunakan untuk banyak modul<br>
 
-<b> Internal Style Sheet </b>
+<b> Internal Style Sheet </b><br>
 Inline CSS digunakan di dalam tag kode HTML langsung. Biasanya style akan diterapkan pada ID, class, atau elemen.
 
 ```
@@ -91,7 +91,7 @@ Kekurangan:
 - Terjadi redundan, pengulangan style pada tiap elemen
 - Loading page semakin berat<br>
 
-<b> External Style Sheet </b>
+<b> External Style Sheet </b><br>
 Eksternal CSS pelru duhubungkan ke file eksternal yang bertipe .css. Perubahan yang terjadi akan mempengaruhi keseluruhan tampilan. 
 
 ```
@@ -132,7 +132,7 @@ Dalam pengerjaan tugas kali ini, saya menggunakan beberapa tag seperti berikut,
 19. `<title>` digunakan untuk merepresentasikan judul
 20. `<ul>` digunakan untuk  <br>
 
-## Tipe CSS Selector#
+## Tipe CSS Selector ##
 **1. ID Selector**
 Selector yang penggunaannya memerlukan id unik dari elemen HTML 
 ```
@@ -170,7 +170,6 @@ Selector yang menggunakan `*` dalam mendeklarasikan *style*
     box-sizing: border-box;
 }
 ```
-<br>
 
 ## Implementasi Checklist ##
 - Implementasi External Style Sheet CSS dengan membuat folder `static` yang berisi file dengan tipe .css. Di dalam file .css ini, kita perlu menggunakan kreativias dalam memberi gaya. Jangan lupa untuk menyambungkan file .css pada file .html di `Templates` menggunakan
@@ -200,4 +199,4 @@ Selector yang menggunakan `*` dalam mendeklarasikan *style*
                 </div>
                 ...
 ```
-- Membuat semua halaman menjadi *responsive* dengan mengimport `{% extends 'base.html' %}` dan tambahkan `display: flex;` saat memberi *style* utama halaman
+- Membuat semua halaman menjadi *responsive* dengan mengimport `{% extends 'base.html' %}` dan tambahkan `display: flex;` saat memberi *style* utama halaman.
