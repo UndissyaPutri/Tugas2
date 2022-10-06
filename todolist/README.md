@@ -47,6 +47,157 @@ Alur dari pengumpulan data pengguna sebagai berikut:
 9. Deploy aplikasi ke Heroku dan pastikan semua fungsi berjalan dengan baik. Lakukan langkah testing dengan login akun dan membuat todo list</b>
 
 </br></br>
-Sumber yang digunakan pada Tugas 4:</br>
-https://www.youtube.com/watch?v=Oy9K7iz3aa4</br>
-https://www.youtube.com/results?search_query=styling+button+in+html+in+the+middle+file+
+
+# Tugas 5: Web Design Using HTML, CSS, and CSS Framework
+
+## Perbedaan dari Inline, Internal, dan External CSS? Apa saja kelebihan dan kekurangan dari masing-masing style? ##
+
+<b> Inline Style </b>
+Kode internal CSS merupakan kode yanng berisi tampilan aplikasi yang diletakkan sebagai atribut pada bagian HTML, biasanya kode CSS ada pada `head`. 
+
+```
+<style>
+body {
+    background-color: blue;
+}
+h1 {
+    color: red;
+    padding: 60px;
+} 
+</style>
+```
+
+Kelebihan:
+- Lebih cepat karena pembacaan kode secara langsung dalam satu file
+- Perubahan hanya ada dalam satu halaman<br>
+
+Kekurangan:
+- Hanya aktif pada halaman tertentu tempat kode berada
+- Sulit jika digunakan untuk banyak modul<br>
+
+<b> Internal Style Sheet </b>
+Inline CSS digunakan di dalam tag kode HTML langsung. Biasanya style akan diterapkan pada ID, class, atau elemen.
+
+```
+<h1 style="color:white;padding:30px;">Hostinger Tutorials</h1>
+<p style="color:white;">Something usefull here.</p>
+```
+
+Kelebihan:
+- Efektif untuk melakukan perubahan ringan kode
+- Digunakan untuk *testing* tampilan<br>
+
+Kekurangan:
+- Terjadi redundan, pengulangan style pada tiap elemen
+- Loading page semakin berat<br>
+
+<b> External Style Sheet </b>
+Eksternal CSS pelru duhubungkan ke file eksternal yang bertipe .css. Perubahan yang terjadi akan mempengaruhi keseluruhan tampilan. 
+
+```
+<head>
+  <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+```
+
+Kelebihan:
+- Rapi dalam penulisan kode
+- Mudah untuk melakukan perubahan saat berkolaborasi<br>
+
+
+Kekurangan:
+- Ada delay dalam pengaksesan file eksternal
+- Waktu *load* halaman dapat belum ditampilkan secara sempurna<br>
+
+## Tag HTML 5 ##
+Dalam pengerjaan tugas kali ini, saya menggunakan beberapa tag seperti berikut,
+1. `<a>`digunakan untuk hyperlink web page
+2. `<b>`digunakan untuk memberi *style* bold
+3. `<body>` digunakan untuk mendeklarasikan bagian utama HTML
+4. `<br>` digunakan untuk merepresentasikan whitespace line break atau enter
+5. `<button>` digunakan untuk membuat kontrol tombol
+6. `<div>` digunakan untuk mendefinisikan suatu bagian yang dapat berisi elemen
+7. `<dl>` digunakan untuk mendefinisikan *definiiton list*
+8. `<form>` digunakan untuk merepresentasikan form pada dokumen seperti input, button
+9. `<h1>, <h2>, ..., <h6>` digunakan untuk merepresentasikan heading sesuai dengan level yang diinginkan
+10. `<head>` digunakan untuk merepresentasikan bagian awal seperti judul, deskripsi
+11. `<html>` digunakan untuk merepresentasikan induk dari HTML 
+12. `<input>` digunakan untuk mengontrol input user
+13. `<label>` digunakan untuk merepresentasikan form 
+14. `<li>` digunakan untuk merepresentasikan *list item*
+15. `<meta>` digunakan untuk merepresentasikan metadata seperti `<title>, <base>, dan <style>`
+16. `<p>` digunakan untuk merepresentasukan paragraf
+17. `<style>` digunakan untuk mengubah gaya dari elemen mengguankan dokumentasi style
+18. `<table>` digunakan untuk merepresentasikan tabel lebih dari satu dimensi emnggunakan baris dan kolom
+19. `<title>` digunakan untuk merepresentasikan judul
+20. `<ul>` digunakan untuk  <br>
+
+## Tipe CSS Selector#
+**1. ID Selector**
+Selector yang penggunaannya memerlukan id unik dari elemen HTML 
+```
+#title1 {
+    text-align: center;
+    padding-top: 15px;
+}
+```
+
+**2. Classes Selector**
+Selector yang penggunaannya berdasar pada nama elemen HTML
+ ```
+h1 {
+    font-size: 12px;
+    width: 100%;
+    font-weight: bold;
+}
+ ```
+
+**3. Element Selector**
+Selector yang penggunaannya memanggil class yang telah didefinisikan pada elemen HTML
+```
+.class1 {
+    width: 400px;
+    margin: auto;
+    padding: 100px;
+}
+```
+**4. Universal Selector**
+Selector yang menggunakan `*` dalam mendeklarasikan *style*
+```
+* {
+    margin: 8px 0;
+    display: inline-block;
+    box-sizing: border-box;
+}
+```
+<br>
+
+## Implementasi Checklist ##
+- Implementasi External Style Sheet CSS dengan membuat folder `static` yang berisi file dengan tipe .css. Di dalam file .css ini, kita perlu menggunakan kreativias dalam memberi gaya. Jangan lupa untuk menyambungkan file .css pada file .html di `Templates` menggunakan
+```
+{% load static %}
+<head>
+    <link rel="stylesheet" href="{% static 'logincss.css' %}">
+</head>
+```
+- Lakukan kustomisasi untuk 4 halaman, utama, login, register, dan create_task. Tambahkan framework untuk mempermudah perubahan. 
+- Ubah tabel pada `todolist.html` dari bentuk tabel menjadi card. Pembaruan ini dapat dengan menggunakan `<div>`. 
+```
+{% for todo in todolist %}
+    <div class="card lg:grid-cols-4 md:grid-cols-3 gap-5 mt-8 sm:mt-5">
+        {% if todo.is_finished == False %}
+            <p style="text-align: end; font-size: 85%; opacity: 0.7;">{{todo.date}}</p>
+            <h2>{{todo.title}}</h2>
+            <p style="font-size: 90%;">{{todo.description}}</p>
+            <h4>Pending</h4>
+                <div style="text-align: end;">
+                    <a href="/todolist/update-status/{{todo.id}}">
+                        <button class="update" type="submit">Update</button>
+                    </a>
+                    <a href="/todolist/delete-task/{{todo.id}}">
+                        <button class="delete" type="submit">Delete</button>
+                    </a>
+                </div>
+                ...
+```
+- Membuat semua halaman menjadi *responsive* dengan mengimport `{% extends 'base.html' %}` dan tambahkan `display: flex;` saat memberi *style* utama halaman
