@@ -8,6 +8,10 @@
 **Halaman TODO List** [here](https://katalogapplication.herokuapp.com/todolist/)<br/>
 **Halaman New Task** [here](https://katalogapplication.herokuapp.com/todolist/create-task/)<br/>
 
+**Akun Dummy**
+1. Username = dumm4, password = fasilkom1
+2. Username = dummy0, password = fasilkom1
+
 ##  Apa kegunaan `{% csrf_token %}` pada elemen `<form>`? Apa yang terjadi apabila tidak ada potongan kode tersebut pada elemen `<form>`? ## 
 
 CSRF adalah kependekan dari Cross Site Request Forgery. Django memiliki fitur proteksi secara default untuk mengatasi serangan CSRF. Tujuannya adalah untuk mengecek form yang diisi dan dikirim balik berasal dari pengguna atau bukan. Django akan mengecek token tersebut, jika sesuai maka akan memproses request pengguna.<br/>
