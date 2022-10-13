@@ -1,4 +1,13 @@
 # Tugas 6: Javascript dan AJAX
+<b>Undissya Putri Maharani
+<b>2106650935 - PBP F
+
+<b>Tampilan Register [here](https://katalogapplication.herokuapp.com/todolist/)<br/>
+
+<b>Akun Dummy
+
+Username = dumm4, password = fasilkom1
+Username = dummy0, password = fasilkom1
 
 ## Perbedaan antara asynchronous programming dengan synchronous programming ##
 
