@@ -1,64 +1,186 @@
+<html>
 {% extends 'base.html' %}
 
 {% block meta %}
-<title>📑#TODO List📑</title>
+<title>📝#TODO List📝</title>
+
+<!-- import bootstrap -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<head> 
+    {% load static %}
+    <link rel="stylesheet" href="{% static './todolistcss.css' %}">
+</head>
 {% endblock meta %}
 
 {% block content %}  
-
-{% load static %}
-<head>
-<link rel="stylesheet" href="{% static 'todolistcss.css' %}">
-    </head>
-
 <body>
-    <div class="todolist">
-        <h2 class="header">Welcome to your daily #TODO List, dear {{username}}!</h2>
-        <!-- <h2 style="text-align: center; color: #33475b">Have a productive <day!</h2> -->
-        <div style="text-align: end;">
-            <a href="{% url 'todolist:create_task' %}">
-                <button class="add">Add New Task</button>
-            </a>
-        </div>
-
-            {% for todo in todolist %}
-                <div class="card lg:grid-cols-4 md:grid-cols-3 gap-5 mt-8 sm:mt-5">
-                    {% if todo.is_finished == False %}
-                        <p style="text-align: end; font-size: 85%; opacity: 0.7;">{{todo.date}}</p>
-                        <h2>{{todo.title}}</h2>
-                        <p style="font-size: 90%;">{{todo.description}}</p>
-                        <h4>Pending</h4>
+    <script>
+        // load data json
+        function data_json(){
+          $.get('/todolist/json/', function(data){
+            show_data(data);
+          })
+        };
+      
+        // menampilkan card
+        function show_data(data){
+          if (data.length != 0){
+            let todo = '';
+            for (let task of data){
+              if (task.fields.is_finished){
+                todo += `
+                <div class="todo" style="opacity: 0.5;">
+                <p style="text-align: end; font-size: 85%; opacity: 0.7;">${task.fields.date}</p>
+                    <h2 style="text-align: start;">${task.fields.title}</h2>
+                    <p style="font-size: 90%; text-align: start;">${task.fields.description}</p>
+                    <h4 style="text-align: start;">Done</h4>
+                        <div style="text-align: end;">
+                            <a href="/todolist/update-status/${task.pk}">
+                                <button class="update" type="submit">Update</button>
+                            </a>
+                            <a>
+                                <button class="delete" type="submit" onclick="delete_data(${task.pk})">Delete</button>
+                            </a>
+                        </div>
+                </div>`;
+              } 
+              else{
+                todo += `
+                <div class="todo">
+                    <p style="text-align: end; font-size: 85%; opacity: 0.7;">${task.fields.date}</p>
+                        <h2 style="text-align: start;">${task.fields.title}</h2>
+                        <p style="font-size: 90%; text-align: start">${task.fields.description}</p>
+                        <h4  style="text-align: start;">Pending</h4>
                             <div style="text-align: end;">
-                                <a href="/todolist/update-status/{{todo.id}}">
+                                <a href="/todolist/update-status/${task.pk}">
                                     <button class="update" type="submit">Update</button>
                                 </a>
-                                <a href="/todolist/delete-task/{{todo.id}}">
-                                    <button class="delete" type="submit">Delete</button>
+                                <a>
+                                    <button class="delete" type="submit" onclick="delete_data(${task.pk})">Delete</button>
                                 </a>
                             </div>
-                    {% else %}
-                        <div style="opacity: 0.5;">
-                            <p style="text-align: end; font-size: 85%; opacity: 0.7;">{{todo.date}}</p>
-                            <h2>{{todo.title}}</h2>
-                            <p style="font-size: 90%;">{{todo.description}}</p>
-                            <h4>Done</h4>
-                                <div style="text-align: end;">
-                                    <a href="/todolist/update-status/{{todo.id}}">
-                                        <button class="update" type="submit">Update</button>
-                                    </a>
-                                    <a href="/todolist/delete-task/{{todo.id}}">
-                                        <button class="delete" type="submit">Delete</button>
-                                    </a>
-                                </div>
+                </div>`;
+              } 
+            };
+            document.getElementById('todo_cards').innerHTML = todo;
+          };  
+        };
+
+        // menghapus data
+        function reset_element(){
+          $("#new_todo")[0].reset();
+        }
+
+        // menghapus asinkronus
+        function delete_data(id){
+          $.ajax({
+            type: 'DELETE',
+            url: '/todolist/delete-task/'+id,
+            dataType: 'json',
+            headers: {
+              "X-CSRFTOKEN": "{{ csrf_token }}"
+            },
+            success: function(data){
+              console.log("Done");
+              data_json();
+            }
+          })
+        }
+        
+        // menampilkan data json
+        $(document).ready(function(){
+          data_json();
+          $("button").click(function (){
+            data_json();
+          });
+        });
+      
+        // menampilkan form data
+        $(document).on('submit', '#new_todo', function(e){
+          e.preventDefault();
+          $.ajax({
+            type: 'POST',
+            url: '/todolist/add/',
+            data: {
+              title: $('#title').val(),
+              description: $('#description').val(),
+              csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+              action:'post',
+            },
+            dataType: 'json',
+            success: function(data){
+              console.log("Done");
+              data_json();
+              $('#add_new_todo').modal('hide');
+              $('.modal_backdrop').remove();
+              reset_element()
+            }
+          })
+        })
+      </script>  
+
+    <!-- styling tampilan -->
+    <div class="todolist">
+        <h2 class="header" >Welcome to your daily #TODO List, dear {{username}}!</h2>
+
+        <!-- styling form -->
+        <div style="text-align: end;">
+            <button class="add" data-bs-toggle="modal" data-bs-target="#create-new">Add Task</button>
+
+            <div class="modal fade" id="create-new" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="staticBackdropLabel">Drop your task here:</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="reset_element()"></button>
+                    </div>
+                    <div class="modal-body">
+                      <form method="POST" action="" id="new_todo">
+                        {% csrf_token %}
+                        <div style="text-align: start;">
+                            <label for="exampleFormControlInput1">Title:</label>
+                            <input type="text" name="title" class="form-control" id="title" placeholder="Title" required>
                         </div>
-                    {% endif %}
+                        <br>
+                        <div style="text-align: start;">
+                            <label for="exampleFormControlInput1">Description:</label>
+                            <textarea name="description" class="form-control" id="description" placeholder="Description"></textarea>
+                        </div>
+                        <br> <br>
+
+                        <button type="button" class="discard" data-bs-dismiss="modal" onclick="reset_element()">Discard</button>
+                        <button type="submit" class="submit" data-bs-dismiss="modal">Submit</button>
+                      </form>
+                    </div>
+                  </div>
                 </div>
-            {% endfor %}
+              </div>
+
+              <div id="todo_cards"></div> 
+              {% if messages %}
+                {% for message in messages %}
+                  <div class="alert alert-primary alert-dismissible fade show mx-4" role="alert">
+                    {{message}}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+                {% endfor %}
+              {% endif %}
+            </div>
                 
             <div style="text-align: center;">                
                 <a href="{% url 'todolist:logout' %}">
                     <button class="logout">Logout</button>
                 </a>
+            </div>
         </div>
-    </body>
+    </div>
+</div>    
+</body>
 {% endblock content %}
+</html>
