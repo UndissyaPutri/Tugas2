@@ -1,8 +1,8 @@
 # Tugas 6: Javascript dan AJAX
-<b>Undissya Putri Maharani
-<b>2106650935 - PBP F
+<b>Undissya Putri Maharani</b><br>
+<b>2106650935 - PBP F</b>
 
-<b>Tampilan Register [here](https://katalogapplication.herokuapp.com/todolist/)<br/>
+<b>Tampilan Utama Aplikasi [here](https://katalogapplication.herokuapp.com/todolist/)</b><br/>
 
 <b>Akun Dummy</b>
 
