@@ -4,9 +4,9 @@
 
 <b>Tampilan Register [here](https://katalogapplication.herokuapp.com/todolist/)<br/>
 
-<b>Akun Dummy
+<b>Akun Dummy</b>
 
-Username = dumm4, password = fasilkom1
+Username = dumm4, password = fasilkom1<br>
 Username = dummy0, password = fasilkom1
 
 ## Perbedaan antara asynchronous programming dengan synchronous programming ##
